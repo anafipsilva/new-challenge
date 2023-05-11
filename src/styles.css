@@ -1,0 +1,54 @@
+body {
+  background: #fcfcfc !important;
+  padding: 60px;
+}
+
+input {
+  background: transparent !important;
+}
+
+input::placeholder {
+  font-weight: 300 !important;
+  color: #a6a6a6 !important;
+}
+
+.search-button {
+  border: none;
+  background: none;
+  position: relative;
+  padding: 0;
+}
+.today-info {
+  font-size: 15px;
+  font-weight: lighter;
+}
+.info-day {
+  font-family: monospace;
+  font-weight: lighter;
+}
+.temperature {
+  font-size: 60px;
+}
+.weather {
+  width: 200px;
+}
+
+.weather-day {
+  padding: 20px 0;
+  border-right: 1px solid lightgrey;
+}
+
+.weather-day i {
+  font-size: 40px;
+}
+
+.no-border {
+  border: 0;
+}
+ul {
+  margin: 0 auto;
+  display: block;
+  border: none;
+  text-align: center;
+  font-size: 10px;
+}
