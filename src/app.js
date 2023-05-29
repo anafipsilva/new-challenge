@@ -2,6 +2,11 @@ let temperature = 12;
 let unitSelected = "c";
 let apiKey = "2b6fdad0cbd018949c50c70f72250726";
 let apiUrl = "https://api.openweathermap.org/data/2.5/weather?units=metric";
+let searched = false;
+
+function getIconSrc(name) {
+  return `http://openweathermap.org/img/wn/${name}@2x.png`;
+}
 
 function setCurrentDay() {
   let date = new Date();
@@ -53,11 +58,18 @@ function setUnit(unit) {
 
 function currentTemperature(response) {
   let city = response.data.name;
+  let icon = response.data.weather[0].icon;
+  let wind = Math.round(response.data.wind.speed);
+  let humidity = Math.round(response.data.main.humidity);
   let temp = Math.round(response.data.main.temp);
-  let tempUnit = document.querySelector("#temperature-unit");
-  tempUnit.innerHTML = `${temp}`;
-  let h2 = document.querySelector("h2");
-  h2.innerHTML = city;
+  let weatherDescription = response.data.weather[0].description;
+  document.querySelector("#main-content").style.display = "block";
+  document.querySelector("#temperature-unit").innerHTML = `${temp}`;
+  document.querySelector("h2").innerHTML = city;
+  document.querySelector("#weather-description").innerHTML = weatherDescription;
+  document.querySelector("#weather-icon").src = getIconSrc(icon);
+  document.querySelector("#wind-info").innerHTML = wind;
+  document.querySelector("#humidity-info").innerHTML = humidity;
 }
 
 function getPositionByCoordinates(position) {
