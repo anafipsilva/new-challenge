@@ -1,4 +1,4 @@
-let temperature = 12;
+let temperature;
 let unitSelected = "c";
 let apiKey = "2b6fdad0cbd018949c50c70f72250726";
 let apiUrl = "https://api.openweathermap.org/data/2.5/weather?units=metric";
@@ -61,10 +61,11 @@ function currentTemperature(response) {
   let icon = response.data.weather[0].icon;
   let wind = Math.round(response.data.wind.speed);
   let humidity = Math.round(response.data.main.humidity);
-  let temp = Math.round(response.data.main.temp);
   let weatherDescription = response.data.weather[0].description;
+  temperature = Math.round(response.data.main.temp);
+
   document.querySelector("#main-content").style.display = "block";
-  document.querySelector("#temperature-unit").innerHTML = `${temp}`;
+  document.querySelector("#temperature-unit").innerHTML = `${temperature}`;
   document.querySelector("h2").innerHTML = city;
   document.querySelector("#weather-description").innerHTML = weatherDescription;
   document.querySelector("#weather-icon").src = getIconSrc(icon);
